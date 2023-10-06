@@ -23,7 +23,7 @@ import { useState } from "react";
 
 function App() {
   const [mode, setMode] = useState('light');
-  axios.defaults.baseURL = "http://localhost:8800/api/";
+  axios.defaults.baseURL = "https://kmit-circle-backend.onrender.com/api/";
   axios.defaults.withCredentials = true;
   const dispatch = useDispatch();
   const {isAuthenticated} = useSelector((state) => state.user)
