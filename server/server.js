@@ -24,7 +24,7 @@ const __dirname = path.dirname(__filename);
 export const app = express()
 const allowedOrigins = ['http://192.168.199.141:3000','http://localhost:3000'];
 
-config()
+config({ path: '' })
 
 // middlewares
 app.use(cookieParser())
