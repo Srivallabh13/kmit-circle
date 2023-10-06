@@ -4,9 +4,9 @@
   "description": "",
   "main": "tailwind.config.js",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":" npm run build"
+    "build":" npm build"
   },
   "author": "",
   "license": "ISC",
