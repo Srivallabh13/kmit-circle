@@ -11,6 +11,7 @@ export const login = async (req, res, next) => {
         if(!user) {
             return next(new ErrorHandler("email doesnot exists", 400));
         }
+        console.log(user);
         const match = await bcrypt.compare(password, user.password);
         if(!match) {
             return next(new ErrorHandler("Invalid Password", 400));
