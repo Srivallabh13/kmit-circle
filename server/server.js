@@ -22,7 +22,7 @@ import { createBlog, updateBlog } from "./controllers/blog.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 export const app = express()
-const allowedOrigins = ['http://192.168.199.141:3000','http://localhost:3000'];
+const allowedOrigins = ['http://192.168.199.141:3000','http://localhost:3000', 'https://campuscircle17.netlify.app/'];
 
 config({ path: '/.env' })
 
