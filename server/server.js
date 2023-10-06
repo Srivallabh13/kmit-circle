@@ -29,9 +29,11 @@ config({ path: '/.env' })
 app.use(cookieParser())
 app.use(express.json());
 app.use(express.json({ limit: '10mb' }));
+
 app.use(cors({
     credentials:true,
-    origin:'https://campuscircle17.netlify.app/',
+    origin:['https://campuscircle17.netlify.app'],
+    methods: ['POST','GET', 'DELETE', 'PUT']
 }))
 
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
