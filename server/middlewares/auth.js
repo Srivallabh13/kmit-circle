@@ -1,10 +1,13 @@
 import User from '../models/User.js'
 import jwt from 'jsonwebtoken'
 import ErrorHandler from '../utils/errorhandler.js'
+import {LocalStorage} from 'node-localstorage';
 
+var localStorage = new LocalStorage('./scratch');
 export const isAuth = async(req,res,next) => {
     try {
-        const {token} = req.cookies
+        // const {token} = req.cookies
+        const token = localStorage.getItem('token');
         if(!token) {
             return next(new ErrorHandler("Please login first", 401))
         } 
