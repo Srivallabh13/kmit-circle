@@ -30,7 +30,7 @@ export const login = async (req, res, next) => {
             success:true,
             message:"cookie created and login successful",
             user,
-            token
+            new_token
         });
     }catch (error) {
         return next(new ErrorHandler(error, 400));
