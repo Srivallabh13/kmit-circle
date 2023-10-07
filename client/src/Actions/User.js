@@ -12,7 +12,7 @@ export const LoginUser = (email, password) => async(dispatch) => {
             }
         })
         if(data) {
-          document.cookie = `token=${data?.cookie}`;
+          document.cookie = `new_token=${data?.cookie}`;
         }
         dispatch({
             type:"LoginSuccess",

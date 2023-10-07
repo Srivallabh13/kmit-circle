@@ -98,7 +98,7 @@ const Feed = ({
         <Typography variant='p'>{caption}</Typography>
       </Box>
       <Box m={1} display={ postImage ? 'block' : 'none'}>
-        <img src={`http://localhost:8800/assets/${postImage}`} alt="postImage" width={'100%'} />
+        <img src={`https://kmit-circle-backend.onrender.com/assets/${postImage}`} alt="postImage" width={'100%'} />
       </Box>
       <Stack justifyContent={'space-between'} px={3} py={2} direction={'row'} className=' p-3 engage flex flex-row justify-between'>
 

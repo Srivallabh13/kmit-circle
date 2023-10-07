@@ -100,7 +100,7 @@ const Story = ({ownerId, blogId, photo, savedBlog=[], likes=[], comments=[], con
             <Stack direction={'column'} sx={{width:{xs:'100%', sm:'80%'}}} gap={1}>
               <Link to={`/blog/${blogId}`}>
                 <Box sx={{ width: '150px', height: '150px' , display:{xs:'block', sm:'none'}, mx:'auto'}}>
-                  <img src={`http://localhost:8800/assets/${photo}`} alt="" style={{ width: '100%', height: '100%' }} />
+                  <img src={`https://kmit-circle-backend.onrender.com/assets/${photo}`} alt="" style={{ width: '100%', height: '100%' }} />
                 </Box>
                 <Typography fontWeight={'700'} variant='h5'>{title}</Typography>
                 <Typography variant='p'>{parser(initialWords)}{ '...'}</Typography>
@@ -121,7 +121,7 @@ const Story = ({ownerId, blogId, photo, savedBlog=[], likes=[], comments=[], con
             </Stack>
             <Link to={`/blog/${blogId}`}>
             <Box sx={{ width: '150px', height: '150px' , display:{xs:'none', sm:'block'}}}>
-                <img src={`http://localhost:8800/assets/${photo}`} alt="" style={{ width: '100%', height: '100%' }} />
+                <img src={`https://kmit-circle-backend.onrender.com/assets/${photo}`} alt="" style={{ width: '100%', height: '100%' }} />
             </Box>
             </Link>
           </Stack>

@@ -4,7 +4,7 @@ const UserImage = ({image, firstName, width = 50, height = 50, isOnline=null}) =
   return (
     <Box position={'relative'} >
       <Avatar
-        src={`http://localhost:8800/assets/${image}`}
+        src={`https://kmit-circle-backend.onrender.com/assets/${image}`}
         alt={firstName? firstName.toUpperCase() : "none"}
         sx={{width:{width}, height:{height}}}
         />
