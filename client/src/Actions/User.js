@@ -16,8 +16,9 @@ export const LoginUser = (email, password) => async(dispatch) => {
           type:"LoginSuccess",
           payload: data.user
         }) 
-        console.log("data ", data)
+       // console.log("data ", data)
         if(data && data !== undefined) {
+          console.log("under frontend ",data);
           document.cookie = `new_token=${data?.new_token}`;
         }
     } catch (error) {

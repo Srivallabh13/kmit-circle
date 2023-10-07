@@ -23,7 +23,6 @@ export const login = async (req, res, next) => {
         const new_token = await jwt.sign({_id:user._id}, process.env.JWT_SECRET);
         // localStorage.setItem("token",token);
         res.status(200).cookie("new_token", new_token, {
-            httpOnly: true,
             secure: true,
             maxAge: 90 * 24 * 60 * 60* 1000,
         }).json({
@@ -44,7 +43,7 @@ export const logout = async (req, res, next) => {
       // console.log(localStorage.getItem('token'));
       res
         .status(200)
-        .clearCookie("token")
+        .clearCookie("new_token")
         .json({
           message: "Logout done!",
         });
