@@ -7,6 +7,7 @@ import ErrorHandler from '../utils/errorhandler.js'
 export const isAuth = async(req,res,next) => {
     try {
         const {token} = req.cookies
+        console.log(token);
         // console.log("headers start");
         // console.log(req.headers);
         // console.log("headers end");
