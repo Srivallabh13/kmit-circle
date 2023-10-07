@@ -2,9 +2,9 @@ import jwt from "jsonwebtoken"
 import bcrypt from 'bcrypt';
 import User from '../models/User.js'
 import ErrorHandler from "../utils/errorhandler.js";
-import {LocalStorage} from 'node-localstorage';
+//import {LocalStorage} from 'node-localstorage';
 
-var localStorage = new LocalStorage('./scratch');
+//var localStorage = new LocalStorage('./scratch');
 
 export const login = async (req, res, next) => {
     try {
@@ -21,7 +21,7 @@ export const login = async (req, res, next) => {
         }
         
         const token = await jwt.sign({_id:user._id}, process.env.JWT_SECRET);
-        localStorage.setItem("token",token);
+        //localStorage.setItem("token",token);
         res.status(200).cookie("token", token, {
             httpOnly: true,
             secure: true,
@@ -40,7 +40,7 @@ export const login = async (req, res, next) => {
 // controllers/authController.js
 export const logout = async (req, res, next) => {
     try {
-      localStorage.clear();
+      //localStorage.clear();
       console.log(localStorage.getItem('token'));
       res
         .status(200)
