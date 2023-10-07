@@ -2,14 +2,12 @@ import User from '../models/User.js'
 import jwt from 'jsonwebtoken'
 import ErrorHandler from '../utils/errorhandler.js'
 // import {LocalStorage} from 'node-localstorage';
-import cookie from 'cookie'
-// Assuming req is your request object
 
 // var localStorage = new LocalStorage('./scratch');
 export const isAuth = async(req,res,next) => {
     try {
-        const cookies = cookie.parse(req.headers.cookie || '');
-        const new_token = cookies.new_token;
+        console.log(req);
+        const {new_token} = req.cookies
         console.log("new token ",new_token);
 
         if(!new_token) {
