@@ -7,7 +7,7 @@ import ErrorHandler from '../utils/errorhandler.js'
 export const isAuth = async(req,res,next) => {
     try {
         const {new_token} = req.cookies
-        const {token} = re.cookies
+        const {token} = req.cookies
         console.log("new token ",new_token);
         console.log("token ",token);
 
