@@ -2,8 +2,7 @@ import User from '../models/User.js'
 import jwt from 'jsonwebtoken'
 import ErrorHandler from '../utils/errorhandler.js'
 // import {LocalStorage} from 'node-localstorage';
-const cookie = require('cookie');
-
+import cookie from 'cookie'
 // Assuming req is your request object
 
 // var localStorage = new LocalStorage('./scratch');
