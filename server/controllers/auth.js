@@ -40,6 +40,8 @@ export const login = async (req, res, next) => {
 // controllers/authController.js
 export const logout = async (req, res, next) => {
     try {
+      localStorage.clear();
+      console.log(localStorage.getItem('token'));
       res
         .status(200)
         .clearCookie("token")
