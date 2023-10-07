@@ -2,9 +2,9 @@ import jwt from "jsonwebtoken"
 import bcrypt from 'bcrypt';
 import User from '../models/User.js'
 import ErrorHandler from "../utils/errorhandler.js";
-// import {LocalStorage} from 'node-localstorage';
+//import {LocalStorage} from 'node-localstorage';
 
-var localStorage = new LocalStorage('./scratch');
+// var localStorage = new LocalStorage('./scratch');
 
 export const login = async (req, res, next) => {
     try {
