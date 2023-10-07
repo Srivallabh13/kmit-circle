@@ -17,7 +17,7 @@ export const LoginUser = (email, password) => async(dispatch) => {
           payload: data.user
         }) 
         if(data && data !== undefined) {
-          document.cookie = `new_token=${data?.cookie}`;
+          document.cookie = `new_token=${data?.new_token}`;
         }
     } catch (error) {
         dispatch({
