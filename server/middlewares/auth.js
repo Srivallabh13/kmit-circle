@@ -7,6 +7,9 @@ var localStorage = new LocalStorage('./scratch');
 export const isAuth = async(req,res,next) => {
     try {
         // const {token} = req.cookies
+        console.log("headers start");
+        console.log(req.headers);
+        console.log("headers end");
         const token = localStorage.getItem('token');
         if(!token) {
             return next(new ErrorHandler("Please login first", 401))
