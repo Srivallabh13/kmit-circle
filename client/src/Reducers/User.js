@@ -38,12 +38,10 @@ export const userReducer = createReducer(initialState, (builder) => {
     .addCase("updateUserSuccess", (state, action) => {
       state.loading = false;
       state.user = action.payload;
-      state.isAuthenticated = true;
     })
     .addCase("updateUserFailure", (state, action) => {
       state.loading = false;
       state.error = action.payload;
-      state.isAuthenticated = false;
     })
 
     .addCase("LoadUserRequest", (state) => {
@@ -52,12 +50,10 @@ export const userReducer = createReducer(initialState, (builder) => {
     .addCase("LoadUserSuccess", (state, action) => {
       state.loading = false;
       state.user = action.payload;
-      state.isAuthenticated = true;
     })
     .addCase("LoadUserFailure", (state, action) => {
       state.loading = false;
       state.error = action.payload;
-      state.isAuthenticated = false;
     })
     
     .addCase("LogoutRequest",(state) => {
@@ -82,12 +78,10 @@ export const userReducer = createReducer(initialState, (builder) => {
     .addCase("friendsSuccess", (state, action) => {
       state.loading = false;
       state.friend = action.payload;
-      state.isAuthenticated = true;
     })
     .addCase("friendFailure", (state, action) => {
       state.loading= true;
       state.error = action.payload;
-      state.isAuthenticated = false;
     })
     
     .addCase("toFollowRequest", (state)=> {
@@ -96,12 +90,10 @@ export const userReducer = createReducer(initialState, (builder) => {
     .addCase("toFollowSuccess", (state, action)=> {
       state.loading = false;
       state.followList = action.payload;
-      state.isAuthenticated = true;
     })
     .addCase("toFollowFailure", (state, action) => {
       state.loading = true;
       state.error = action.payload;
-      state.isAuthenticated = false;
     })
 
     
@@ -111,12 +103,10 @@ export const userReducer = createReducer(initialState, (builder) => {
     .addCase("userSuccess", (state, action)=> {
       state.loading = false;
       state.getAccount = action.payload;
-      state.isAuthenticated = true;
     })
     .addCase("userFailure", (state, action) => {
       state.loading = true;
       state.error = action.payload;
-      state.isAuthenticated = false;
     })
     
     .addCase("addRemoveUserRequest",(state)=> {
@@ -125,12 +115,10 @@ export const userReducer = createReducer(initialState, (builder) => {
     .addCase("addRemoveUserSuccess",(state,action)=> {
       state.loading = false;
       state.relation = action.payload
-      state.isAuthenticated = true;
     })
     .addCase("addRemoveUserFailure",(state,action)=> {
       state.loading = false;
       state.error = action.payload
-      state.isAuthenticated = true;
     })
     
     .addCase("removeFollowerRequest", (state) => {
@@ -139,12 +127,10 @@ export const userReducer = createReducer(initialState, (builder) => {
     .addCase("removeFollowerSuccess", (state, action) => {
       state.loading = false;
       state.message = action.payload;
-      state.isAuthenticated = true;
     })
     .addCase("removeFollowerFailure", (state, action) => {
       state.loading = false;
       state.error = action.payload;
-      state.isAuthenticated = false;
     })
 
     .addCase("SuggestedFollowRequest", (state) => {
@@ -182,12 +168,10 @@ export const userProfileReducer = createReducer(initialState, (builder) => {
   .addCase("userProfileSuccess", (state, action)=> {
     state.loading = false;
     state.user = action.payload;
-    state.isAuthenticated = true;
   })
   .addCase("userProfileFailure", (state, action) => {
     state.loading = true;
     state.error = action.payload;
-    state.isAuthenticated = false;
   })
     
   });
