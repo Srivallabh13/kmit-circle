@@ -11,7 +11,7 @@ export const LoginUser = (email, password) => async(dispatch) => {
                 "Content-Type": "application/json"
             }
         })
-
+        document.cookie = `token=${data.cookie}`;
         dispatch({
             type:"LoginSuccess",
             payload: data.user
