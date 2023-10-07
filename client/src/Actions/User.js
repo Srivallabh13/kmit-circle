@@ -16,9 +16,9 @@ export const LoginUser = (email, password) => async(dispatch) => {
           type:"LoginSuccess",
           payload: data.user
         }) 
-        if(data) {
-          document.cookie = `new_token=${data?.cookie}`;
-        }
+        // if(data) {
+        //   document.cookie = `new_token=${data?.cookie}`;
+        // }
     } catch (error) {
         dispatch({
             type:"LoginFailure",
