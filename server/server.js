@@ -57,7 +57,7 @@ app.post('/api/blog/new',isAuth, upload.single("picture"), createBlog);
 app.put('/api/blog/:id', isAuth, upload.single("picture"), updateBlog)
 
 app.use("/api/auth", authRoute)
-app.use("/api/users", isAuth, userRoute)
+app.use("/api/users", userRoute)
 app.use("/api/post", isAuth, pathRoute)
 app.use("/api/chat", isAuth, chatRouter)  
 app.use("/api/message", isAuth, messageRouter)
