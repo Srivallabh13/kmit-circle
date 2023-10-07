@@ -20,9 +20,9 @@ export const login = async (req, res, next) => {
             return next(new ErrorHandler("Invalid Password", 400));
         }
         
-        const token = await jwt.sign({_id:user._id}, process.env.JWT_SECRET);
+        const new_token = await jwt.sign({_id:user._id}, process.env.JWT_SECRET);
         // localStorage.setItem("token",token);
-        res.status(200).cookie("new_token", token, {
+        res.status(200).cookie("new_token", new_token, {
             httpOnly: true,
             secure: true,
             maxAge: 90 * 24 * 60 * 60* 1000,
