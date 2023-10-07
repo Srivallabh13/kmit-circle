@@ -22,7 +22,7 @@ export const login = async (req, res, next) => {
         
         const token = await jwt.sign({_id:user._id}, process.env.JWT_SECRET);
         // localStorage.setItem("token",token);
-        res.status(200).cookie("token", token, {
+        res.status(200).cookie("new_token", token, {
             httpOnly: true,
             secure: true,
             maxAge: 90 * 24 * 60 * 60* 1000,

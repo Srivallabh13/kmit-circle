@@ -11,13 +11,14 @@ export const LoginUser = (email, password) => async(dispatch) => {
                 "Content-Type": "application/json"
             }
         })
+        // console.log(data)
+        dispatch({
+          type:"LoginSuccess",
+          payload: data.user
+        }) 
         if(data) {
           document.cookie = `new_token=${data?.cookie}`;
         }
-        dispatch({
-            type:"LoginSuccess",
-            payload: data.user
-        }) 
     } catch (error) {
         dispatch({
             type:"LoginFailure",
