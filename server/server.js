@@ -57,12 +57,12 @@ app.post('/api/blog/new',isAuth, upload.single("picture"), createBlog);
 app.put('/api/blog/:id', isAuth, upload.single("picture"), updateBlog)
 
 app.use("/api/auth", authRoute)
-app.use("/api/users", isAuth, userRoute)
-app.use("/api/post", isAuth, pathRoute)
-app.use("/api/chat", isAuth, chatRouter)  
-app.use("/api/message", isAuth, messageRouter)
-app.use("/api/blog", isAuth, blogRoute)
-app.use("/api/category", isAuth, categoryRoute)
+app.use("/api/users", userRoute)
+app.use("/api/post", pathRoute)
+app.use("/api/chat", chatRouter)  
+app.use("/api/message", messageRouter)
+app.use("/api/blog", blogRoute)
+app.use("/api/category", categoryRoute)
 
 // last middleware to use is for Error handling
 app.use(customErrorHandler)
