@@ -17,10 +17,10 @@ export const LoginUser = (email, password) => async(dispatch) => {
           payload: data.user
         }) 
        // console.log("data ", data)
-        if(data && data !== undefined) {
-          console.log("under frontend ",data);
-          document.cookie = `new_token=${data?.new_token}`;
-        }
+        // if(data && data !== undefined) {
+        //   console.log("under frontend ",data);
+        //   document.cookie = `new_token=${data?.new_token}`;
+        // }
     } catch (error) {
         dispatch({
             type:"LoginFailure",
