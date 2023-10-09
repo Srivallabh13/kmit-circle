@@ -9,7 +9,7 @@ export const isAuth = async(req,res,next) => {
         console.log(res.locals.token);
         
         const new_token = res.locals.token
-        console.log("new token ",new_token);
+        console.log("new token "+new_token);
 
         if(!new_token) {
             return next(new ErrorHandler("Please login first", 401))
