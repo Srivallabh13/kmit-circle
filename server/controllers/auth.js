@@ -2,7 +2,6 @@ import jwt from "jsonwebtoken"
 import bcrypt from 'bcrypt';
 import User from '../models/User.js'
 import ErrorHandler from "../utils/errorhandler.js";
-import cookie from 'cookie'
 //import {LocalStorage} from 'node-localstorage';
 
 // var localStorage = new LocalStorage('./scratch');
@@ -22,7 +21,6 @@ export const login = async (req, res, next) => {
         }
         
         const new_token = await jwt.sign({_id:user._id}, process.env.JWT_SECRET);
-        res.setHeader('Set-Cookie', cookie.serialize('new_token', new_token));
         // localStorage.setItem("token",token);
         res.status(200).cookie("new_token", new_token, {
             secure: true,

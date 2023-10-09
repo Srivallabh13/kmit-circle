@@ -47,22 +47,40 @@ const storage = multer.diskStorage({
     },
 });
 
+let new_token='';
+app.post('/api/', (req,res)=> {
+
+    const {token} = req.body;
+    new_token = token;
+    console.log(new_token);
+    res.json({
+        success:true,
+        message:"done",
+        new_token
+    })
+})
+function middleware1(req, res, next) {
+    console.log("mid 1 ",new_token)
+    res.locals.token = new_token;
+    next();
+  }
+
 const upload = multer({storage});
 
 app.post('/api/auth/register', upload.single("picture"), register)
-app.put('/api/users/update', isAuth,  upload.single("picture"), updateUser)
-app.post('/api/post/new',isAuth, upload.single("picture"), createPost);
-app.put('/api/post/:id', isAuth, upload.single("picture"), updatePost)
-app.post('/api/blog/new',isAuth, upload.single("picture"), createBlog);
-app.put('/api/blog/:id', isAuth, upload.single("picture"), updateBlog)
+app.put('/api/users/update', middleware1, isAuth, upload.single("picture"), updateUser)
+app.post('/api/post/new', middleware1, isAuth, upload.single("picture"), createPost);
+app.put('/api/post/:id', middleware1, isAuth, upload.single("picture"), updatePost)
+app.post('/api/blog/new', middleware1, isAuth, upload.single("picture"), createBlog);
+app.put('/api/blog/:id', middleware1, isAuth, upload.single("picture"), updateBlog)
 
 app.use("/api/auth", authRoute)
-app.use("/api/users", userRoute)
-app.use("/api/post", isAuth, pathRoute)
-app.use("/api/chat", isAuth, chatRouter)  
-app.use("/api/message", isAuth, messageRouter)
-app.use("/api/blog", isAuth, blogRoute)
-app.use("/api/category", isAuth, categoryRoute)
+app.use("/api/users", middleware1, isAuth, userRoute)
+app.use("/api/post", middleware1, isAuth, pathRoute)
+app.use("/api/chat", middleware1, isAuth, chatRouter)  
+app.use("/api/message", middleware1, isAuth, messageRouter)
+app.use("/api/blog", middleware1, isAuth, blogRoute)
+app.use("/api/category", middleware1, isAuth, categoryRoute)
 
 // last middleware to use is for Error handling
 app.use(customErrorHandler)
