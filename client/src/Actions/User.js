@@ -17,10 +17,10 @@ export const LoginUser = (email, password) => async(dispatch) => {
           payload: data.user
         }) 
        // console.log("data ", data)
-        if(data && data !== undefined) {
-          console.log("under frontend ",data);
-          document.cookie = `new_token=${data?.new_token}`;
-        }
+        // if(data && data !== undefined) {
+        //   console.log("under frontend ",data);
+        //   document.cookie = `new_token=${data?.new_token}`;
+        // }
         var temp = document.cookie.split("=");
         console.log("array temp ",temp[1])
         const res = await axios.post('/', {token: temp[1]}, {

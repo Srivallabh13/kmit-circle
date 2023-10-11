@@ -17,9 +17,9 @@ export const login = async (req, res, next) => {
             return next(new ErrorHandler("Invalid Password", 400));
         }
         
-        const new_token = await jwt.sign({_id:user._id}, process.env.JWT_SECRET);
+        const token = await jwt.sign({_id:user._id}, process.env.JWT_SECRET);
 
-        res.status(200).cookie("new_token", new_token, {
+        res.status(200).cookie("token", token, {
             secure: true,
             maxAge: 90 * 24 * 60 * 60* 1000,
             sameSite: 'None',
@@ -27,7 +27,7 @@ export const login = async (req, res, next) => {
             success:true,
             message:"cookie created and login successful",
             user,
-            new_token
+            token
         });
     }catch (error) {
         return next(new ErrorHandler(error, 400));
@@ -41,7 +41,7 @@ export const logout = async (req, res, next) => {
       // console.log(localStorage.getItem('token'));
       res
         .status(200)
-        .clearCookie("new_token")
+        .clearCookie("token")
         .json({
           message: "Logout done!",
         });
