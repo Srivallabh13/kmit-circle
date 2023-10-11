@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Divider, Modal, Stack, Typography } from "@mui/material";
+import { Avatar, Box, Button, Divider, Fab, Modal, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { format, parseISO } from 'date-fns';
 import parser from 'html-react-parser'
@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { LikeBlog, bookmarkBlog, getBlogs, getPopularBlogs, getSavedBlogs, getSpecificBlog, views } from "../../../Actions/Blog";
 import { Link, useParams } from "react-router-dom";
 import UserImage from "../../utils/UserImage";
-import Following from "../../rightSidebar/Following";
 import { LoadUser, addRemoveUser } from "../../../Actions/User";
+import './singleBlog.css'
 
 const SingleBlog = () => {
   const [time, setTime] = useState('');
@@ -20,6 +20,7 @@ const SingleBlog = () => {
   const [saveBlog, setSaveBlog] = useState('');
   console.log(liked)
 
+  
   useEffect(()=> {
     dispatch(getSpecificBlog(params.id))
     dispatch(views(params.id))
@@ -28,7 +29,8 @@ const SingleBlog = () => {
   const {userBlog} = useSelector((state)=>state.blog)
   const {savedBlog} = useSelector((state)=> state.blog);
   const likes = userBlog ? userBlog.likedBy : []; 
-  console.log(likes)
+  
+  const blogContent = parser(userBlog? userBlog.content:'')
 
   useEffect(() => {
     likes.forEach((item) => {
@@ -79,6 +81,7 @@ const isFriend = me.following.find((friend) => friend?._id.toString() === userBl
     dispatch(LoadUser())
   };
 
+  
   useEffect(()=> {
 
     const timeFormat = (timestamp) => {
@@ -91,16 +94,11 @@ const isFriend = me.following.find((friend) => friend?._id.toString() === userBl
     )
 },[userBlog])
 
+
   
   return (
-    <Stack
-      direction={"column"}
-      width={"50%"}
-      sx={{ mx: "auto" }}
-      gap={3}
-      mt={7}
-    >
-      <Typography variant="h3" sx={{ fontWeight: 700 }}>
+    <Stack className="main" direction={"column"} maxWidth={{xs:"100%", md:"70%", lg:"60%"}} sx={{ m:{xs:1, sm:3, md:'auto'} }} gap={{xs:1, md:3}} mt={{xs:1, sm:5, lg:7}}>
+      <Typography sx={{fontSize: {xs:30, md:43}, fontWeight: 700, wordWrap:"break-word"}}>
         {userBlog?.title}
       </Typography>
       <Stack direction={"row"} gap={1} alignItems={"center"}>
@@ -137,12 +135,7 @@ const isFriend = me.following.find((friend) => friend?._id.toString() === userBl
               </Box>
             </Modal>
           </Stack>
-          <Stack
-            direction={"row"}
-            color={"GrayText"}
-            gap={1}
-            alignItems={"center"}
-          >
+          <Stack direction={"row"} color={"GrayText"} gap={1} alignItems={"center"}>
             <Typography variant="p">{userBlog?.readingTime} min read</Typography>
             <Typography variant="p">-</Typography>
             <Typography variant="p">{time}</Typography>
@@ -160,26 +153,24 @@ const isFriend = me.following.find((friend) => friend?._id.toString() === userBl
         </Box>
       </Stack>
       <Divider className="dark:bg-gray-50" />
-      <Stack width={"100%"} my={3} gap={3} sx={{ mx: "auto" }}>
-        <img
-          src={`http://localhost:8800/assets/${userBlog?.photo}`}
-          className="h-[300px] w-[100%] mx-auto rounded-lg object-cover"
-          alt=""
-        />
-        <Typography variant="p">
-          {parser(userBlog? userBlog.content:'')}
-        </Typography>
 
-        <Stack direction={'row'} gap={3}>
-          {userBlog?.category && userBlog?.category.length > 0 ? userBlog.category.map((cat) => (
-            <Box key={cat} sx={{maxWidth: 'fit-content',  borderRadius:'10%', p:'10px', bgcolor:'lightgrey'}}>
+      <Stack width={"100%"} className="clas" my={{xs:0, sm:3}} gap={3} sx={{ mx: "auto" }}>
+          <img
+            src={`http://localhost:8800/assets/${userBlog?.photo}`}
+            className="hey h-[300px] w-[100%] mx-auto rounded-lg object-cover"
+            alt=""
+          />
+          <Typography className="content" width={"100%"} mx={'auto'} variant="p">
+              {blogContent}
+          </Typography>
+          <Stack direction={'row'} gap={3} m={1} p={1} overflow={'scroll'}>
+            {userBlog?.category && userBlog?.category.length > 0 ? userBlog.category.map((cat) => (
               <Link to={`/blog?category=${cat}`}>
-                <Typography variant="p">{cat}</Typography>
+                <Fab variant="extended">{cat}</Fab>
               </Link>
-            </Box>
-          )) : (null)}
+            )) : (null)}
+          </Stack>
         </Stack>
-      </Stack>
     </Stack>
   );
 };
