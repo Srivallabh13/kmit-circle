@@ -1,7 +1,6 @@
 import React from 'react'
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import {WhatshotRounded, GroupRounded, EditNoteRounded, BookRounded, CategoryRounded} from '@mui/icons-material';
 import MuiDrawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
@@ -10,8 +9,6 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import { Link } from 'react-router-dom';
 import ConversationsSideBar from './ConversationsSideBar';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -88,7 +85,7 @@ const DrawerConversations = ({currentChat,setCurrentChat}) => {
   };
 
   useEffect(()=> {
-    socket.current = io("ws://localhost:8080");
+    socket.current = io("https://kmit-circle-socket.onrender.com");
     socket.current.emit('new-user', user._id)
     socket.current.on('get-users', (users)=> {
       setOnlineUsers(users)
