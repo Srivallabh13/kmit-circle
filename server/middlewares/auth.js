@@ -6,16 +6,14 @@ import ErrorHandler from '../utils/errorhandler.js'
 // var localStorage = new LocalStorage('./scratch');
 export const isAuth = async(req,res,next) => {
     try {
-        console.log(res.locals.token);
         
-        const new_token = res.locals.token
-        console.log("new token "+new_token);
-
-        if(!new_token) {
+        const {token} = req.cookie
+        console.log("is Auth: ",token)
+        if(!token) {
             return next(new ErrorHandler("Please login first", 401))
         } 
     
-        const decode = await jwt.verify(new_token, process.env.JWT_SECRET)
+        const decode = await jwt.verify(token, process.env.JWT_SECRET)
     
         req.user = await User.findById(decode._id)
         next()
