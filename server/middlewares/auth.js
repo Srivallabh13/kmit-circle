@@ -9,6 +9,7 @@ export const isAuth = async(req,res,next) => {
         
         const {token} = req.cookie
         console.log("is Auth: ",token)
+        console.log("is req: ",req)
         if(!token) {
             return next(new ErrorHandler("Please login first", 401))
         } 
