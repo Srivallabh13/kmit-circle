@@ -31,7 +31,8 @@ function Chat() {
 
   // connect to socket.io
   useEffect(()=> {
-    socket.current = io("ws://localhost:8080");
+    socket.current = io("https://kmit-circle-socket.onrender.com");
+    // socket.current = io("ws://localhost:8080");
     socket.current.emit('new-user', user._id)
     socket.current.on('get-users', (users)=> {
       setOnlineUsers(users)
