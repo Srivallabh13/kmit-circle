@@ -18,10 +18,11 @@ export const login = async (req, res, next) => {
         }
         
         const new_token = await jwt.sign({_id:user._id}, process.env.JWT_SECRET);
-        
+
         res.status(200).cookie("new_token", new_token, {
             secure: true,
             maxAge: 90 * 24 * 60 * 60* 1000,
+            sameSite: 'None',
         }).json({
             success:true,
             message:"cookie created and login successful",

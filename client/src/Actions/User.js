@@ -19,7 +19,7 @@ export const LoginUser = (email, password) => async(dispatch) => {
        // console.log("data ", data)
         if(data && data !== undefined) {
           console.log("under frontend ",data);
-          document.cookie = `token=${data?.new_token}`;
+          document.cookie = `new_token=${data?.new_token}`;
         }
         var temp = document.cookie.split("=");
         console.log("array temp ",temp[1])
