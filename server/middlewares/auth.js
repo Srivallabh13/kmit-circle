@@ -7,9 +7,9 @@ import ErrorHandler from '../utils/errorhandler.js'
 export const isAuth = async(req,res,next) => {
     try {
         
-        console.log("is Auth: ",token)
         console.log("is req: ",req)
-        const {token} = req.cookie
+        console.log("is Auth: ", req?.cookie)
+        const token = req?.cookie?.token;
         if(!token) {
             return next(new ErrorHandler("Please login first", 401))
         } 
