@@ -155,11 +155,13 @@ const isFriend = me.following.find((friend) => friend?._id.toString() === userBl
       <Divider className="dark:bg-gray-50" />
 
       <Stack width={"100%"} className="clas" my={{xs:0, sm:3}} gap={3} sx={{ mx: "auto" }}>
-          <img
-            src={`https://kmit-circle-backend.onrender.com/assets${userBlog?.photo}`}
-            className="hey h-[300px] w-[100%] mx-auto rounded-lg object-cover"
-            alt=""
-          />
+          <Box display={userBlog?.photo ? 'block':'none'}>
+            <img
+              src={`https://kmit-circle-backend.onrender.com/assets/${userBlog?.photo}`}
+              className="hey h-[300px] w-[100%] mx-auto rounded-lg object-cover"
+              alt=""
+            />
+          </Box>
           <Typography className="content" width={"100%"} mx={'auto'} variant="p">
               {blogContent}
           </Typography>
