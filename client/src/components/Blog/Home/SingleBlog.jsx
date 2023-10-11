@@ -124,7 +124,7 @@ const isFriend = me.following.find((friend) => friend?._id.toString() === userBl
             <Modal open={modalOpen} onClose={handleModalClose}>
               <Box sx={{ position: 'absolute', top: '50%', left: '50%', outline:'none', border:'none', transform: 'translate(-50%, -50%)', width: 600, height: 300, bgcolor: 'background.paper', boxShadow: 24, p: 2 }}>
                 <Stack direction={'column'} alignItems={'center'} spacing={2}>
-                  <Avatar src = {`http://localhost:8800/assets/${userBlog?.userId.avatar}`} sx={{width: 80, height: 80 }} alt = {userBlog?.userId.firstName} />
+                  <Avatar src = {`https://kmit-circle-backend.onrender.com/assets/${userBlog?.userId.avatar}`} sx={{width: 80, height: 80 }} alt = {userBlog?.userId.firstName} />
                   <Typography variant='h6'>Are you sure, you want to unfollow {userBlog?.userId.firstName}</Typography>
 
                   <Divider variant="middle" sx={{width:'80%',color:"black"}} />
@@ -156,7 +156,7 @@ const isFriend = me.following.find((friend) => friend?._id.toString() === userBl
 
       <Stack width={"100%"} className="clas" my={{xs:0, sm:3}} gap={3} sx={{ mx: "auto" }}>
           <img
-            src={`http://localhost:8800/assets/${userBlog?.photo}`}
+            src={`https://kmit-circle-backend.onrender.com/assets${userBlog?.photo}`}
             className="hey h-[300px] w-[100%] mx-auto rounded-lg object-cover"
             alt=""
           />
