@@ -11,25 +11,12 @@ export const LoginUser = (email, password) => async(dispatch) => {
                 "Content-Type": "application/json"
             }
         })
-        // console.log(data)
         dispatch({
           type:"LoginSuccess",
           payload: data.user
-        }) 
-       // console.log("data ", data)
-        // if(data && data !== undefined) {
-        //   console.log("under frontend ",data);
-        //   document.cookie = `new_token=${data?.new_token}`;
-        // }
-        var temp = document.cookie.split("=");
-        console.log("array temp ",temp[1])
-        const res = await axios.post('/', {token: temp[1]}, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
         });
 
-    } catch (error) {
+      } catch (error) {
         dispatch({
             type:"LoginFailure",
             payload: error 
