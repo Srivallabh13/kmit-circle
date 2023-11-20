@@ -48,7 +48,7 @@ const Register = () => {
     const {isRegistered} = useSelector((state)=>state.user)
     useEffect(() => {
       if(isRegistered) {
-        window.location.href = '/login';
+        window.location.href = '/';
       }
     },[isRegistered])
 
