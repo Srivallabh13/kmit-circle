@@ -23,7 +23,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 export const app = express()
 
-config({ path: '/.env' })
+config()
 
 // middlewares
 app.use(cookieParser())

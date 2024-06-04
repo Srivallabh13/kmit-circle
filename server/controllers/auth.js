@@ -37,12 +37,13 @@ export const login = async (req, res, next) => {
 // controllers/authController.js
 export const logout = async (req, res, next) => {
     try {
-      res
-        .status(200)
-        .clearCookie("token")
-        .json({
-          message: "Logout done!",
-        });
+      return res
+      .status(200)
+      .cookie("token", "", { sameSite:"none", httpOnly:true, secure: true, maxAge: 0 })
+      .json({
+        success: true,
+        message: "Logged out successfully",
+      });
     } catch (error) {
       return next(new ErrorHandler(error, 500));
     }
